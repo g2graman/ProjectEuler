@@ -1,10 +1,9 @@
 #lang racket
 
-(define Ssquares 
-  (apply + 
-         (map sqr (range 1 101))))
+(define (Ssquares n)
+  (/ (* n (+ n 1) (+ (* 2 n) 1)) 6))
 
-(define squareS
-  (sqr (apply + (range 1 101))))
+(define (squareS n)
+  (sqr (/ (* n (+ n 1)) 2)))
 
-(- squareS Ssquares)
+(- (squareS 100) (Ssquares 100))
