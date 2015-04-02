@@ -24,7 +24,7 @@
                              (if (and (not (eq? sdx x)) (eq? sdsdx x))
                                  (list x sdx)
                                  (list))))
-                         (range 2 10000))))))
+                         (range 2 10000 2))))))
 
 answer
 
