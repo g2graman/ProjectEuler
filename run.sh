@@ -21,7 +21,7 @@ for fixture in $SELECTED_FIXTURES; do
 	#echo "$ACTUALS: $EXPECTED"
 	for file in $ACTUALS; do
 		ACTUAL=$(racket "$fixture/$file")
-		"$ICDIFF" -L "actual (haskell)" -L "expected (racket)" --line-numbers <(echo "$ACTUAL") <(echo "$EXPECTED")
+		"$ICDIFF" -L "actual (racket)" -L "expected (from answer.txt)" --line-numbers <(echo "$ACTUAL") <(echo "$EXPECTED")
 	   	diff <(echo "$ACTUAL") <(echo "$EXPECTED") &>/dev/null
 	   	ESTATUS=$?
         if [[ $ERR || ESTATUS ]]; then ERR=1; fi #set error status
