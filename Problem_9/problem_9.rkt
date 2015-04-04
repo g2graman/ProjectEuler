@@ -13,7 +13,7 @@
 
 
 (define (stop-over-s s [n 1] [m 1])
-  (letrec ([vals (pythag n m)]
+  (let* ([vals (pythag n m)]
            [a (list-ref vals 0)]
            [b (list-ref vals 1)]
            [c (list-ref vals 2)])
@@ -28,3 +28,5 @@
                 (void)
                 (stop-over-s s (+ n 1) 1)))
         (stop-over-s s n (+ m 1)))))
+
+(stop-over-s 1000)

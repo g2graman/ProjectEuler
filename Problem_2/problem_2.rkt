@@ -19,6 +19,6 @@
                 (lambda (x)
                   (if (eq? (modulo (fib x) divisor ) 0)
                       (fib x)
-                      0)) (range 1 i)))
-      )
-  )
+                      0)) (range 1 i)))))
+
+(answer)

@@ -54,3 +54,5 @@
 
 (define answer 
   (first (hash-ref inv-cyc-lens (longest-cycle-under 1000))))
+
+answer

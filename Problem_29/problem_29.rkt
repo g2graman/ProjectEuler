@@ -11,3 +11,5 @@
           (begin 
             (set-add! acc (expt a b))
              (iter a (+ b 1) acc)))))
+ 
+ (iter)

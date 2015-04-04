@@ -34,3 +34,5 @@
 
 (define (num-paths n)
   (choose (* 2 n) n))
+
+(num-paths 20)

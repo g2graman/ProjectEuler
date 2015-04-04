@@ -16,3 +16,5 @@
   (if (>= (string-length (number->string (fib cur))) l)
       cur
       (fib-length l (+ cur 1))))
+      
+(fib-length 1000)

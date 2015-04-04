@@ -19,3 +19,5 @@
           (begin
             (add cur)
             (sieve limit (+ cur 1) countPrimes)))))
+
+(sieve 10001)

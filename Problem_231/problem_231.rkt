@@ -1,6 +1,7 @@
 #lang racket
 
-(require math)
+(require racket/lazy-require)
+(lazy-require [math (factorize)])
 
 (define (sum-factors n) ; add the prime factors of n
   (apply + 

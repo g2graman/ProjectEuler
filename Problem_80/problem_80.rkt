@@ -21,4 +21,6 @@
     ;TODO: for modularity make above cut from decimal point (generalize the 2)
     (range 2 101))))
 
+answer
+
 

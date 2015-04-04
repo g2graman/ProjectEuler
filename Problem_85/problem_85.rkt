@@ -20,7 +20,7 @@
                  (answer num-recs x (+ y 1) e cur))))))
 
 
-(define start-time (current-inexact-milliseconds)) ;for profiling
+;(define start-time (current-inexact-milliseconds)) ;for profiling
 (answer)
-(define time-total (- (current-inexact-milliseconds) start-time))
-time-total
+;(define time-total (- (current-inexact-milliseconds) start-time))
+;time-total

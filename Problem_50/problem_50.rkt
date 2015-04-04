@@ -1,7 +1,7 @@
 #lang racket
 
 (require racket/lazy-require)
-(lazy-require [math (next-prime prime? nth-prime)])
+(lazy-require [math (next-prime prime?)])
 
 (define (get-prime n)
   (- (hash-ref prime-sum (+ n 1))
