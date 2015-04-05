@@ -1,13 +1,20 @@
 #lang racket
 
-;TODO: lazy require
 (require racket/file)
+
+(define cd
+	(list-ref (explode-path (find-system-path 'run-file)) 0))
+	
+(define f 
+	(string-append
+	(path->string (path->directory-path cd))
+	"p022_names.txt"))
 
 (define names (sort
                (string-split 
                 (string-replace 
                  (list-ref 
-                  (file->lines "p022_names.txt") 0)  "\"" "") ",") 
+                  (file->lines f) 0)  "\"" "") ",") 
                string<?))
 
 (let 

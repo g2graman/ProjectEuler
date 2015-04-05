@@ -19,7 +19,7 @@ for fixture in $SELECTED_FIXTURES; do
 	ACTUALS=$(ls $fixture | grep .rkt)
 	EXPECTED=$(cat "$fixture/$(ls $fixture | grep answer.txt | head -1 | cat)")
 	#echo "$ACTUALS: $EXPECTED"
-	for file in $ACTUALS; do
+	for file in "$ACTUALS"; do
 		ACTUAL=$(racket "$fixture/$file")
 		"$ICDIFF" -L "actual (racket)" -L "expected (from answer.txt)" --line-numbers <(echo "$ACTUAL") <(echo "$EXPECTED")
 	   	diff <(echo "$ACTUAL") <(echo "$EXPECTED") &>/dev/null
