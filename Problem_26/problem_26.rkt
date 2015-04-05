@@ -6,7 +6,7 @@
 (define cyc-lens (make-hash))
 (define inv-cyc-lens (make-hash))
 
-(define primes (mutable-set))
+(define primes (set))
 
 (provide cyc-lens inv-cyc-lens primes)
 
@@ -21,7 +21,7 @@
   (begin 
     (let ([factors (prime-factors composite)]) 
       (begin 
-        (set-union! primes factors)
+        (set-union primes factors)
         (apply max 
               (map cycle-len 
                    (set->list factors)))))))
