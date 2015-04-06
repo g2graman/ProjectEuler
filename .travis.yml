@@ -25,12 +25,12 @@ before_install:
   - cat travis-racket/install-racket.sh | bash # pipe to bash not sh!
   - export PATH="${RACKET_DIR}/bin:${PATH}" #install-racket.sh can't set for us
 
-
-#install:
+install:
+  - make testdepend
 
 #before_script:
 
 script:
-  - make
+  - make run
 
 #after_script:
