@@ -1,12 +1,16 @@
-language: c
+language: ruby
 
 sudo: false
+
+rvm:
+  - ruby-head-clang
+  - ruby-head
 
 env:
   global:
     - RACKET_DIR=~/racket
+    - CI_NODE_TOTAL=6
   matrix:
-    - RACKET_VERSION=5.3.4
     - RACKET_VERSION=5.3.5
     - RACKET_VERSION=5.92
     - RACKET_VERSION=6.0
@@ -21,16 +25,17 @@ matrix:
 
 
 before_install:
+  - gem update --system
+  - bundle install
   - git clone https://github.com/greghendershott/travis-racket.git
   - cat travis-racket/install-racket.sh | bash # pipe to bash not sh!
   - export PATH="${RACKET_DIR}/bin:${PATH}" #install-racket.sh can't set for us
 
-
-#install:
-
-#before_script:
+before_script:
+  - gem update
+  - gem --version
 
 script:
-  - make
+  - make run
 
-#after_script:
+after_success: coveralls
