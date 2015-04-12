@@ -1,6 +1,13 @@
-language: c
+language: ruby
 
 sudo: false
+
+rvm:
+  - ruby-head-clang
+  - ruby-head
+  - ruby-2.2.1-clang
+  - ruby-2.2.1
+  - ruby-2.2.0-rc1
 
 env:
   global:
@@ -21,16 +28,17 @@ matrix:
 
 
 before_install:
+  - gem install bashcov
+  - gem install
   - git clone https://github.com/greghendershott/travis-racket.git
   - cat travis-racket/install-racket.sh | bash # pipe to bash not sh!
   - export PATH="${RACKET_DIR}/bin:${PATH}" #install-racket.sh can't set for us
 
-install:
-  - make testdepend
-
-#before_script:
+before_script:
+  - gem update
+  - gem --version
 
 script:
   - make run
 
-#after_script:
+after_success: coveralls
