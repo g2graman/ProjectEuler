@@ -3,7 +3,7 @@ all: clean testdepend run
 
 .PHONY: run
 run: testdepend
-	bashcov ./run.sh
+	bashcov --skip-uncovered ./run.sh
 
 .PHONY: testdepend
 testdepend:

@@ -5,13 +5,11 @@ sudo: false
 rvm:
   - ruby-head-clang
   - ruby-head
-  - ruby-2.2.1-clang
-  - ruby-2.2.1
-  - ruby-2.2.0-rc1
 
 env:
   global:
     - RACKET_DIR=~/racket
+    - CI_NODE_TOTAL=6
   matrix:
     - RACKET_VERSION=5.3.4
     - RACKET_VERSION=5.3.5
@@ -20,6 +18,12 @@ env:
     - RACKET_VERSION=6.1
     - RACKET_VERSION=6.1.1
     - RACKET_VERSION=HEAD
+    - CI_NODE_INDEX=0
+    - CI_NODE_INDEX=1
+    - CI_NODE_INDEX=2
+    - CI_NODE_INDEX=3
+    - CI_NODE_INDEX=4
+    - CI_NODE_INDEX=5
 
 matrix:
   allow_failures:
