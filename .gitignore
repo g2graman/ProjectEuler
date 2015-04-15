@@ -15,4 +15,3 @@ target/
 bin
 compiled/
 */**/compiled/
-Gemfile.lock
