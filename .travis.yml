@@ -22,8 +22,8 @@ matrix:
 
 before_install:
   - git clone https://github.com/greghendershott/travis-racket.git
-  - cat travis-racket/install-racket.sh | bash # pipe to bash not sh!
-  - export PATH="${RACKET_DIR}/bin:${PATH}" #install-racket.sh can't set for us
+  - cat travis-racket/install-racket.sh | bash
+  - export PATH="${RACKET_DIR}/bin:${PATH}"
 
 script:
   - make testdepend
@@ -33,7 +33,7 @@ after_success: |
   wget https://github.com/SimonKagstrom/kcov/archive/master.tar.gz &&
   tar xzf master.tar.gz && mkdir kcov-master/build && 
   cd kcov-master/build && cmake .. && make &&
-  sudo make install && cd ../.. && ls &&
-  kcov --coveralls-id=$TRAVIS_JOB_ID target/kcov run_tests.sh && 
+  sudo make install && cd ../.. && ls && mkdir coverage &&
+  kcov --coveralls-id=$TRAVIS_JOB_ID coverage run_tests.sh && 
   coveralls
 
