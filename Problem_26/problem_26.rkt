@@ -1,7 +1,9 @@
-#lang racket
+#lang lazy
 
-(require math)
-(require racket/set)
+(require racket/lazy-require)
+(lazy-require [math (factorize prime?)])
+(lazy-require [racket/set (set set-add set-union set->list set-member?)])
+(lazy-require [racket/list (range)])
 
 (define cyc-lens (make-hash))
 (define inv-cyc-lens (make-hash))
@@ -55,4 +57,5 @@
 (define answer 
   (first (hash-ref inv-cyc-lens (longest-cycle-under 1000))))
 
-answer
+;answer
+(provide answer)

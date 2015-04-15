@@ -1,4 +1,7 @@
-#lang racket
+#lang lazy
+
+(require racket/lazy-require)
+(lazy-require [racket/list (range)])
 
 ; Note: (eq? (modulo -2 7) 5)
 ; TODO: generalize
@@ -19,4 +22,5 @@
                                 (range 3 15)))) 
               (range 1901 2001))))
 
-answer
+;answer
+(provide answer)

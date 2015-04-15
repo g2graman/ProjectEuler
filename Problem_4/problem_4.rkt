@@ -1,4 +1,4 @@
-#lang racket
+#lang lazy
 
 (define (largest m n [init 999] [cur -1])
   (if (eq? n 0)
@@ -24,4 +24,6 @@
       (palindrome? s (+ b 1) (- e 1))
       #f)))
 
-(largest 999 999)
+(define answer (largest 999 999))
+;answer
+(provide answer)

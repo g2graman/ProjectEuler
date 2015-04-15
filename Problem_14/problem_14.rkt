@@ -1,4 +1,7 @@
-#lang racket
+#lang lazy
+
+(require racket/lazy-require)
+(lazy-require [racket/list (range)])
 
 (provide seqs)
 (define seqs (make-hash))
@@ -25,11 +28,13 @@
    0 
    (map collatz (range 1000000 1 (- 1)))))
 
-(car 
+(define answer (car 
  (first
   (filter 
    (lambda (i) 
      (eq? 
       (cdr i)
       max-len)) 
-   (hash->list seqs))))
+   (hash->list seqs)))))
+;answer
+(provide answer)

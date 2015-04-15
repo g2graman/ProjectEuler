@@ -1,4 +1,7 @@
-#lang racket
+#lang lazy
+
+(require racket/lazy-require)
+(lazy-require [racket/list (range)])
 
 (define fibs (make-hash))
 (provide fibs)
@@ -12,7 +15,7 @@
             (hash-ref! fibs n (+ (fib (- n 1)) (fib (- n 2))))
             (hash-ref fibs n)))))
 
-(define (answer [i 0] [thresh 4000000] [divisor 2])
+(define (get-answer [i 0] [thresh 4000000] [divisor 2])
   (if (<= (fib i) thresh)
       (answer (+ i 1) thresh)
       (apply + (map 
@@ -21,4 +24,6 @@
                       (fib x)
                       0)) (range 1 i)))))
 
-(answer)
+(define answer (get-answer))
+;answer
+(provide answer)

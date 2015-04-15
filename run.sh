@@ -2,7 +2,7 @@
 
 
 ICDIFF=icdiff
-if [ -f ./bin/icdiff ]; then
+if [ -d ./bin ] && [ -f ./bin/icdiff ]; then
     ICDIFF=./bin/icdiff
 fi
 
@@ -24,7 +24,7 @@ for fixture in $SELECTED_FIXTURES; do
 		"$ICDIFF" -L "actual (racket)" -L "expected (from answer.txt)" --line-numbers <(echo "$ACTUAL") <(echo "$EXPECTED")
 	   	diff <(echo "$ACTUAL") <(echo "$EXPECTED") &>/dev/null
 	   	ESTATUS=$?
-        if [[ $ERR || ESTATUS ]]; then ERR=1; fi #set error status
+        if [ ! $ERR ] || [ ! $ESTATUS ]; then ERR=1; fi #set error status
 	done
 done
 

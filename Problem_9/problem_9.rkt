@@ -1,4 +1,8 @@
-#lang racket
+#lang lazy
+
+(require racket/lazy-require)
+(lazy-require [racket/math (sqr)])
+(lazy-require [racket/list (range)])
 
 (define triples (make-hash))
 (provide triples)
@@ -29,4 +33,6 @@
                 (stop-over-s s (+ n 1) 1)))
         (stop-over-s s n (+ m 1)))))
 
-(stop-over-s 1000)
+(define answer (stop-over-s 1000))
+;answer
+(provide answer)

@@ -1,4 +1,4 @@
-#lang racket
+#lang lazy
 
 (define fibs (make-hash))
 (provide fibs)
@@ -17,4 +17,6 @@
       cur
       (fib-length l (+ cur 1))))
       
-(fib-length 1000)
+(define answer (fib-length 1000))
+;answer
+(provide answer)

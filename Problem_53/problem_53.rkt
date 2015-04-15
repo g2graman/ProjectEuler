@@ -1,4 +1,4 @@
-#lang racket
+#lang lazy
 
 (require racket/lazy-require)
 (lazy-require [math (binomial)])
@@ -14,4 +14,6 @@
               (count-comb (+ n 1) 1 (+ c 1))
               (count-comb (+ n 1) 1 c)))))
 
-(count-comb)
+(define answer (count-comb))
+;answer
+(provide answer)

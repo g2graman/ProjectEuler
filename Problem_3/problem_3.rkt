@@ -1,7 +1,7 @@
-#lang racket
+#lang lazy
 
-(require math)
-
+(require racket/lazy-require)
+(lazy-require [math (factorize prime?)])
 
 (define (prime-factors n [lst (reverse (factorize n))])
   (if (> (length lst) 0)
@@ -10,4 +10,6 @@
           (prime-factors n (rest lst)))
       0))
 
-(prime-factors 600851475143)
+(define answer (prime-factors 600851475143))
+;answer
+(provide answer)

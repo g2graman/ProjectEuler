@@ -1,6 +1,6 @@
-#lang racket
+#lang lazy
 
-(define (answer 
+(define (get-answer 
          [num-recs 2000000] 
          [x 2000] 
          [y 1]
@@ -21,6 +21,8 @@
 
 
 ;(define start-time (current-inexact-milliseconds)) ;for profiling
-(answer)
+(define answer (get-answer))
+;answer
+(provide answer)
 ;(define time-total (- (current-inexact-milliseconds) start-time))
 ;time-total

@@ -1,6 +1,6 @@
 ProjectEuler
 ============
-Current status of solutions: [![Build Status](https://travis-ci.org/g2graman/ProjectEuler.svg?branch=master)](https://travis-ci.org/g2graman/ProjectEuler)
+Current status of solutions: [![Build Status](https://travis-ci.org/g2graman/ProjectEuler.svg?branch=master)](https://travis-ci.org/g2graman/ProjectEuler) [![Coverage Status](https://coveralls.io/repos/g2graman/ProjectEuler/badge.svg)](https://coveralls.io/r/g2graman/ProjectEuler)
 
 This repository contains my answers to the problems of Project Euler. In each of the hosted directories there is a file named `answer.txt` which holds the answer to the corresponding problem on ProjectEuler. I added those files after solving the problems to verify that my solutions to those problems would not regress.
 

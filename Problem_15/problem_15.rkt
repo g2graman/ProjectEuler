@@ -1,4 +1,4 @@
-#lang racket
+#lang lazy
 
 (provide hash)
 (define hash (make-hash))
@@ -35,4 +35,6 @@
 (define (num-paths n)
   (choose (* 2 n) n))
 
-(num-paths 20)
+(define answer (num-paths 20))
+;answer
+(provide answer)

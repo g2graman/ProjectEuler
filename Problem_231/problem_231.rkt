@@ -1,4 +1,4 @@
-#lang racket
+#lang lazy
 
 (require racket/lazy-require)
 (lazy-require [math (factorize)])
@@ -24,4 +24,6 @@
      (+ (chain-factors k) (chain-factors (- n k))) ; sum of prime factors of k!(n-k)!
      )))
 
-(sum-prime-factors-binomial n k)
+(define answer (sum-prime-factors-binomial n k))
+answer
+(provide answer)

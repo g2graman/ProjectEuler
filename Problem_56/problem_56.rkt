@@ -1,4 +1,8 @@
-#lang racket
+#lang lazy
+
+(require racket/lazy-require)
+(lazy-require [racket/string (string->number string->list)])
+(lazy-require [racket/list (range)])
 
 (define (digit-sum num)
   (apply + 
@@ -11,5 +15,5 @@
                 (digit-sum (expt 99 i))) 
               (range 90 100))))
 
-answer
-
+;answer
+(provide answer)
