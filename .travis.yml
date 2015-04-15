@@ -19,11 +19,12 @@ matrix:
     - env: RACKET_VERSION=HEAD
   fast_finish: true
 
-
+cache:
+  directories:
+  - travis-racket
+  
 before_install:
-  - git clone https://github.com/greghendershott/travis-racket.git
-  - cat travis-racket/install-racket.sh | bash
-  - export PATH="${RACKET_DIR}/bin:${PATH}"
+  - ./get_racket.sh
 
 script:
   - make testdepend
@@ -33,7 +34,7 @@ after_success: |
   wget https://github.com/SimonKagstrom/kcov/archive/master.tar.gz &&
   tar xzf master.tar.gz && mkdir kcov-master/build && 
   cd kcov-master/build && cmake .. && make &&
-  sudo make install && cd ../.. && ls && mkdir coverage &&
+  sudo make install && cd ../.. && mkdir coverage &&
   kcov --coveralls-id=$TRAVIS_JOB_ID coverage run_tests.sh && 
-  coveralls
+  #coveralls
 
