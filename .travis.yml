@@ -25,7 +25,7 @@ cache:
   - cache
   
 before_install:
-  - scripts/get_racket.sh
+  - sudo scripts/get_racket.sh
 
 script:
   - make testdepend
