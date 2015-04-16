@@ -1,6 +1,6 @@
 language: c
 
-sudo: true
+sudo: false
 
 env:
   global:
@@ -20,6 +20,7 @@ matrix:
   fast_finish: true
 
 cache:
+  apt: true
   directories:
   - bin/cover
   - cache

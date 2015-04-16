@@ -31,7 +31,7 @@ if ([ ! -e /usr/racket ] || [ ! -d /usr/racket ]); then
 		fi
 		cat travis-racket/install-racket.sh | bash
 	else
-		sudo ./$INSTALL
+		./$INSTALL
 	fi
 fi
 
