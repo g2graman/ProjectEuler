@@ -17,9 +17,10 @@ if ([ -z "$INSTALL" ]); then
 	echo "Racket installation script not found, building."
 	git clone https://github.com/greghendershott/travis-racket.git
 	cat travis-racket/install-racket.sh | bash
+else
+	./racket-${RACKET_VERSION}.sh
 fi
 
 cd ..
-cache/racket-${RACKET_VERSION}.sh
 
 export PATH="${RACKET_DIR}/bin:${PATH}"
