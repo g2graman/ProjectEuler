@@ -5,15 +5,13 @@
 #    ICDIFF=./bin/icdiff
 #fi
 
-
+SELECTED_FIXTURES=$1
 if [ -z "${1-}" ]; then
 	for file in $(ls); do
 		if [ $(ls $file | grep answer.txt | wc -w) -gt 0 ]; then 
 			SELECTED_FIXTURES="$SELECTED_FIXTURES $file";
 		fi
 	done
-else
-	SELECTED_FIXTURES=$1
 fi
 
 TEMPLATE=`cat test-template.rkt`
