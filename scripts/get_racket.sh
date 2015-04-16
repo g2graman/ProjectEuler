@@ -9,7 +9,7 @@ fi
 if ([ -z "$RACKET_DIR" ]); then
 	echo "Racket directory environment variable not set, setting default"
 	echo "Directory: /usr/racket" 
-	RACKET_DIR='/usr/racket'  # set default Racket version
+	RACKET_DIR='/usr/racket'  # set default Racket directory
 fi
 
 if ([ ! -e cache ] || [ ! -d cache ]); then
@@ -31,13 +31,19 @@ if ([ ! -e /usr/racket ] || [ ! -d /usr/racket ]); then
 		fi
 		cat travis-racket/install-racket.sh | bash
 	else
-		./$INSTALL
+		sudo ./$INSTALL
 	fi
 fi
 
+alias  # For logging purposes, list the aliases
 if ([ -z "$(alias | grep racket)" ]); then
 	echo "racket alias not set, setting now ..."
 	alias racket="${RACKET_DIR}/bin/racket"
+	racket -e '(exit)'
+	ESTATUS=$?
+	if([ -n $ESTATUS ]); then
+		exit $ESTATUS
+	fi
 fi
 
 cd ..
