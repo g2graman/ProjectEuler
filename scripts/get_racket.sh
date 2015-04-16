@@ -20,7 +20,7 @@ fi
 cd cache
 
 INSTALL=$(ls | grep ^racket*.sh | tr -d [:blank:])
-if ([ ! -e /usr/racket ] || [ ! -d /usr/racket ]); then
+if ([ ! -e "$RACKET_DIR" ] || [ ! -d "$RACKET_DIR" ]); then
 	if ([ -z "$INSTALL" ]); then
 		echo "Racket installation script not found, building."
 		
