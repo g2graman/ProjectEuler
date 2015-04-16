@@ -12,15 +12,16 @@ fi
 
 cd cache
 
-INSTALL=$(ls | grep ^racket*.sh)
+INSTALL=$(ls | grep ^racket*.sh | tr -d [:blank:])
 if ([ -z "$INSTALL" ]); then
 	echo "Racket installation script not found, building."
 	git clone https://github.com/greghendershott/travis-racket.git
 	cat travis-racket/install-racket.sh | bash
 else
-	./racket-${RACKET_VERSION}.sh
+	./$INSTALL
 fi
 
+alias racket='/usr/racket/bin/racket'
 cd ..
 
 export PATH="${RACKET_DIR}/bin:${PATH}"
