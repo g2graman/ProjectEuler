@@ -2,14 +2,14 @@
 
 if ([ -z "$RACKET_VERSION" ]); then
 	echo "Racket version environment variable not set, setting default"
-	echo "Version: HEAD" 
-	RACKET_VERSION=HEAD  # set default Racket version
+	export RACKET_VERSION=HEAD  # set default Racket version
+	echo "Version: $RACKET_VERSION" 
 fi
 
 if ([ -z "$RACKET_DIR" ]); then
 	echo "Racket directory environment variable not set, setting default"
-	echo "Directory: /usr/racket" 
-	RACKET_DIR='/usr/racket'  # set default Racket directory
+	export RACKET_DIR='/usr/racket'  # set default Racket directory
+	echo "Directory: $RACKET_DIR" 
 fi
 
 if ([ ! -e cache ] || [ ! -d cache ]); then
@@ -35,14 +35,16 @@ if ([ ! -e /usr/racket ] || [ ! -d /usr/racket ]); then
 	fi
 fi
 
-alias  # For logging purposes, list the aliases
-if ([ -z "$(alias | grep racket)" ]); then
-	echo "racket alias not set, setting now ..."
-	alias racket="${RACKET_DIR}/bin/racket"
-	racket -e '(exit)'
+which racket &>/dev/null
+ESTATUS=$?
+if([ -n $ESTATUS ]); then
+	echo "Adding racket to PATH"
+	export PATH="${PATH}:${RACKET_DIR}/bin"
+	
+	which racket
 	ESTATUS=$?
 	if([ -n $ESTATUS ]); then
-		exit $ESTATUS
+		exit $ESTATUS  #Exit automation with error
 	fi
 fi
 
