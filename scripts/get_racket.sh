@@ -40,12 +40,6 @@ ESTATUS=$?
 if([ -n $ESTATUS ]); then
 	echo "Adding racket to PATH"
 	export PATH="${PATH}:${RACKET_DIR}/bin"
-	
-	which racket
-	ESTATUS=$?
-	if([ -n $ESTATUS ]); then
-		exit $ESTATUS  #Exit automation with error
-	fi
 fi
 
 cd ..
