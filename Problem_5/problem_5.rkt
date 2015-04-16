@@ -1,4 +1,7 @@
-#lang racket
+#lang lazy
+
+(require racket/lazy-require)
+(lazy-require [racket/list (drop take range)])
 
 (define (merge-lcm lst)
   (if (<= (length lst) 2)
@@ -11,4 +14,6 @@
                (merge-lcm (drop lst (floor (/ (length lst) 2)))))
           (lcm (merge-lcm (take lst (floor (/ (length lst) 2)))) (merge-lcm (drop lst (floor (/ (length lst) 2))))))))
 
-(merge-lcm (range 1 21))
+(define answer (merge-lcm (range 1 21)))
+;answer
+(provide answer)

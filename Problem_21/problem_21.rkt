@@ -1,7 +1,9 @@
-#lang racket
+#lang lazy
 
 (require racket/lazy-require)
 (lazy-require [math (factorize)])
+(lazy-require [racket/set (set->list)])
+(lazy-require [racket/list (list->set append-map range)])
 
 (define (sum-div p a) ; finds sum of divisors of p^a
   (/ (- (expt p (+ a 1)) 1) (- p 1)))
@@ -26,6 +28,6 @@
                                  (list))))
                          (range 2 10000 2))))))
 
-answer
-
+;answer
+(provide answer)
 ;Note: by this definition (eq? 1 (sum-divs-of (sum-divs-of 1))), so initialize range from 2

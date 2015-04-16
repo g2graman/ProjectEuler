@@ -1,9 +1,11 @@
-#lang racket
+#lang lazy
+
+(require racket/lazy-require)
+(lazy-require [racket/list (append-map range drop take)])
 
 ;TODO: generalize to (n x n) or (n x m)
 
 (define rows (make-hash))
-(provide rows)
 
 (define (diag-lr-windows len)
   (filter (lambda (elem) (not (eq? elem (void)))) 
@@ -100,7 +102,8 @@
   (hash-ref! rows 18 (list 20 69 36 41 72 30 23 88 34 62 99 69 82 67 59 85 74 04 36 16))
   (hash-ref! rows 19 (list 20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54))
   (hash-ref! rows 20 (list 01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48))
+  (void))
   
-  (define len 4)
-  
-  (maximizeAdjOnOp len *))
+  (define answer (maximizeAdjOnOp 4 *))
+  ;answer
+  (provide answer)

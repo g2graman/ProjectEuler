@@ -1,7 +1,9 @@
-#lang racket
+#lang lazy
 
 (require racket/lazy-require)
 (lazy-require [math (factorize)])
+(lazy-require [racket/set (set set-member? set-add)])
+(lazy-require [racket/list (range)])
 
 (define (sum-div p a) ; finds sum of divisors of p^a
   (/ (- (expt p (+ a 1)) 1) (- p 1)))
@@ -23,7 +25,7 @@
 
 (define lengths (map chain-length (range 10000 14500 2)))
 
-(+ 
+(define answer (+ 
  (* 
   (- 
    (length lengths) 
@@ -33,4 +35,6 @@
             (filter (lambda (x) (> x 0)) lengths)) 
      lengths))) 
   2) 
- 10000)
+ 10000))
+ ;answer
+ (provide answer)

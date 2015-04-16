@@ -1,7 +1,8 @@
-#lang racket
+#lang lazy
 
-(require math)
-(require racket/set)
+(require racket/lazy-require)
+(lazy-require [math (prime?)])
+(lazy-require [set (set-member? set set-add)])
 
 (provide comps)
 (define comps (set))
@@ -20,4 +21,6 @@
             (add cur)
             (sieve limit (+ cur 1) countPrimes)))))
 
-(sieve 10001)
+(define answer (sieve 10001))
+;answer
+(provide answer)

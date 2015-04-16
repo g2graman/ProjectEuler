@@ -1,9 +1,12 @@
-#lang racket
+#lang lazy
+
+(require racket/lazy-require)
+(lazy-require [racket/list (range)])
 
 (define (self-powers [cut-off 1000]) 
   (map (lambda (x) (expt x x)) (range 1 (+ cut-off 1))))
 
-(define (answer [digits 10])
+(define (get-answer [digits 10])
   (let ([digs (expt 10 digits)])
     (modulo 
      (foldl 
@@ -11,4 +14,6 @@
       0 (self-powers)) 
      digs)))
 
-(answer)
+(define answer (get-answer))
+;answer
+(provide answer)

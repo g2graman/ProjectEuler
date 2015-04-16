@@ -1,4 +1,4 @@
-#lang racket
+#lang lazy
 
 (define nums 
   (list 
@@ -104,8 +104,10 @@
    53503534226472524250874054075591789781264330331690))
 
 
-(define (answer [digits 10])
+(define (get-answer [digits 10])
     (string->number (substring (number->string 
      (foldl + 0 nums)) 0 digits)))
 
-(answer)
+(define answer (get-answer))
+;answer
+(provide answer)

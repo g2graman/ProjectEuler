@@ -1,6 +1,8 @@
-#lang racket
+#lang lazy
 
-(require math)
+(require racket/lazy-require)
+(lazy-require [math/bigfloat (bf-precision bigfloat->string bfsqrt bf)])
+(lazy-require [racket/list (range)])
 
 (bf-precision 340) ; specific number of bits to accurately get first 100 decimal digits
 
@@ -21,6 +23,6 @@
     ;TODO: for modularity make above cut from decimal point (generalize the 2)
     (range 2 101))))
 
-answer
-
+;answer
+(provide answer)
 
