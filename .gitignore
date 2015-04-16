@@ -13,8 +13,7 @@ coverage
 target/
 
 bin
-compiled/
-*/**/compiled/
-travis-racket/
+compiled
+travis-racket
 racket-*.sh
-cache/
+cache

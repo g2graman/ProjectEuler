@@ -1,5 +1,4 @@
 #!/bin/bash
-# Requires sudo privileges
 
 if ([ -z "$RACKET_VERSION" ]); then
 	echo "Racket version environment variable not set, setting default"
@@ -36,5 +35,9 @@ if ([ ! -e /usr/racket ] || [ ! -d /usr/racket ]); then
 	fi
 fi
 
-alias racket="${RACKET_DIR}/bin/racket"
+if ([ -z "$(alias | grep racket)" ]); then
+	echo "racket alias not set, setting now ..."
+	alias racket="${RACKET_DIR}/bin/racket"
+fi
+
 cd ..
