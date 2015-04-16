@@ -22,11 +22,10 @@ matrix:
 cache:
   directories:
   - bin/cover
+  - cache
   
 before_install:
-  - git clone https://github.com/greghendershott/travis-racket.git
-  - cat travis-racket/install-racket.sh | bash
-  - export PATH="${RACKET_DIR}/bin:${PATH}"
+  - scripts/get_racket.sh
 
 script:
   - make testdepend
