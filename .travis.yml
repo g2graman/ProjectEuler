@@ -22,6 +22,7 @@ matrix:
 cache:
   directories:
   - travis-racket
+  - bin/cover
   
 before_install:
   - ./get_racket.sh
