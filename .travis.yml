@@ -1,6 +1,6 @@
 language: c
 
-sudo: true
+sudo: false
 
 env:
   global:
@@ -20,12 +20,13 @@ matrix:
   fast_finish: true
 
 cache:
+  apt: true
   directories:
   - bin/cover
   - cache
   
 before_install:
-  - sudo scripts/get_racket.sh
+  - source scripts/get_racket.sh
 
 script:
   - make testdepend
