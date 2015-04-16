@@ -3,7 +3,7 @@ all: clean testdepend run
 
 .PHONY: run
 run: testdepend
-	./run_tests.sh
+	scripts/run_tests.sh
 
 .PHONY: testdepend
 testdepend: bash_testdepend racket_testdepend
@@ -17,8 +17,8 @@ bash_testdepend:
 	
 .PHONY: racket_testdepend
 racket_testdepend:
-	./get_cover.sh
+	scripts/get_cover.sh
 	
 .PHONY: clean
 clean:
-	./clean.sh
+	scripts/clean.sh
