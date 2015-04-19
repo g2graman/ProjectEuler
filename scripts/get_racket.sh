@@ -1,5 +1,7 @@
 #!/bin/bash
 
+START = `pwd`
+
 if [[ -z "$RACKET_VERSION" ]]; then
 	echo "Racket version environment variable not set, setting default"
 	export RACKET_VERSION=HEAD  # set default Racket version
@@ -19,9 +21,9 @@ fi
 
 
 if [[ ! -e "$RACKET_DIR" ]] || [[ ! -d "$RACKET_DIR" ]]; then
+	mkdir $RACKET_DIR
 	cd $RACKET_DIR
 else
-	mkdir $RACKET_DIR
 	cd $RACKET_DIR
 fi
 
@@ -38,7 +40,7 @@ if [[ -z "$INSTALL" ]]; then
 else
 	"./$INSTALL"
 fi
-
+	
 which racket &>/dev/null
 ESTATUS=$?
 if [[ -n $ESTATUS ]]; then
@@ -48,4 +50,4 @@ fi
 
 alias racket='$RACKET_DIR/bin/racket'
 
-cd ~
+cd $START
