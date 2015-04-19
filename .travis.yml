@@ -34,7 +34,7 @@ cache:
   
 before_install:
   - . scripts/get_racket.sh
-  - alias racket="${RACKET_DIR}/bin/racket"
+  - alias racket='$RACKET_DIR/bin/racket'
 
 before_script:
   - make testdepend

@@ -19,8 +19,8 @@ fi
 
 cd cache
 
-INSTALL=$(ls | grep '^racket*.sh' | tr -d '[:blank:]')
 if [[ ! -e "$RACKET_DIR" ]] || [[ ! -d "$RACKET_DIR" ]]; then
+	INSTALL=$(ls | grep '^racket*.sh' | tr -d '[:blank:]')
 	if [[ -z "$INSTALL" ]]; then
 		echo "Racket installation script not found, building."
 		
@@ -39,7 +39,7 @@ which racket &>/dev/null
 ESTATUS=$?
 if [[ -n "$ESTATUS" ]]; then
 	echo "Adding racket to PATH"
-	export PATH="${PATH}:${RACKET_DIR}/bin"
+	export PATH="$PATH:$RACKET_DIR/bin"
 fi
 
 alias racket='$RACKET_DIR/bin/racket'
