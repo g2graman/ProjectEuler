@@ -19,8 +19,8 @@ fi
 
 cd cache
 
-INSTALL=$(ls | grep ^racket*.sh | tr -d [:blank:])
-if ([[ ! -e "$RACKET_DIR" ]] || [[ ! -d "$RACKET_DIR" ]]); then
+INSTALL=$(ls | grep '^racket*.sh' | tr -d '[:blank:]')
+if [[ ! -e "$RACKET_DIR" ]] || [[ ! -d "$RACKET_DIR" ]]; then
 	if ([[ -z "$INSTALL" ]]); then
 		echo "Racket installation script not found, building."
 		
@@ -29,18 +29,21 @@ if ([[ ! -e "$RACKET_DIR" ]] || [[ ! -d "$RACKET_DIR" ]]); then
 		|| [ ! -f travis-racket/install-racket.sh ]); then
 			git clone https://github.com/greghendershott/travis-racket.git
 		fi
-		cat travis-racket/install-racket.sh | bash
+		bash < travis-racket/install-racket.sh
 	else
-		./$INSTALL
+		"./$INSTALL"
 	fi
 fi
 
 which racket &>/dev/null
 ESTATUS=$?
-if([ -n $ESTATUS ]); then
+if [[ -n "$ESTATUS" ]]; then
 	echo "Adding racket to PATH"
 	export PATH="${PATH}:${RACKET_DIR}/bin"
 fi
 
-alias racket="${RACKET_DIR}/bin/racket"
+echo "PATH: " $PATH
+alias racket='$RACKET_DIR/bin/racket'
+alias
+
 cd ..
