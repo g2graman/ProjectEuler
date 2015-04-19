@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#START=$(pwd)
+
 if [[ -z "$RACKET_VERSION" ]]; then
 	echo "Racket version environment variable not set, setting default"
 	export RACKET_VERSION=HEAD  # set default Racket version
@@ -17,8 +19,6 @@ if [ ! -e cache ] || [ ! -d cache ]; then
 	mkdir cache
 fi
 
-cd cache
-
 if [[ ! -e "$RACKET_DIR" ]] || [[ ! -d "$RACKET_DIR" ]]; then
 	INSTALL=$(ls | grep '^racket*.sh' | tr -d '[:blank:]')
 	if [[ -z "$INSTALL" ]]; then
@@ -35,13 +35,4 @@ if [[ ! -e "$RACKET_DIR" ]] || [[ ! -d "$RACKET_DIR" ]]; then
 	fi
 fi
 
-which racket &>/dev/null
-ESTATUS=$?
-if [[ -n "$ESTATUS" ]]; then
-	echo "Adding racket to PATH"
-	export PATH="$PATH:$RACKET_DIR/bin"
-fi
-
-alias racket='$RACKET_DIR/bin/racket'
-
-cd ..
+#cd "$START"
