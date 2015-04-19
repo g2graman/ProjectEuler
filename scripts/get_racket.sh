@@ -1,6 +1,6 @@
 #!/bin/bash
 
-START=$(pwd)
+#START=$(pwd)
 
 if [[ -z "$RACKET_VERSION" ]]; then
 	echo "Racket version environment variable not set, setting default"
@@ -19,8 +19,6 @@ if [ ! -e cache ] || [ ! -d cache ]; then
 	mkdir cache
 fi
 
-cd cache
-
 if [[ ! -e "$RACKET_DIR" ]] || [[ ! -d "$RACKET_DIR" ]]; then
 	INSTALL=$(ls | grep '^racket*.sh' | tr -d '[:blank:]')
 	if [[ -z "$INSTALL" ]]; then
@@ -37,4 +35,4 @@ if [[ ! -e "$RACKET_DIR" ]] || [[ ! -d "$RACKET_DIR" ]]; then
 	fi
 fi
 
-cd "$START"
+#cd "$START"
