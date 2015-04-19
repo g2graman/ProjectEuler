@@ -1,12 +1,12 @@
 #!/bin/bash
 
-if ([ -z "$RACKET_VERSION" ]); then
+if ([[ -z "$RACKET_VERSION" ]]); then
 	echo "Racket version environment variable not set, setting default"
 	export RACKET_VERSION=HEAD  # set default Racket version
 	echo "Version: $RACKET_VERSION" 
 fi
 
-if ([ -z "$RACKET_DIR" ]); then
+if ([[ -z "$RACKET_DIR" ]]); then
 	echo "Racket directory environment variable not set, setting default"
 	export RACKET_DIR='/usr/racket'  # set default Racket directory
 	echo "Directory: $RACKET_DIR" 
@@ -20,8 +20,8 @@ fi
 cd cache
 
 INSTALL=$(ls | grep ^racket*.sh | tr -d [:blank:])
-if ([ ! -e "$RACKET_DIR" ] || [ ! -d "$RACKET_DIR" ]); then
-	if ([ -z "$INSTALL" ]); then
+if ([[ ! -e "$RACKET_DIR" ]] || [[ ! -d "$RACKET_DIR" ]]); then
+	if ([[ -z "$INSTALL" ]]); then
 		echo "Racket installation script not found, building."
 		
 		if ([ ! -e travis-racket ] || [ ! -d travis-racket ] \
@@ -42,4 +42,5 @@ if([ -n $ESTATUS ]); then
 	export PATH="${PATH}:${RACKET_DIR}/bin"
 fi
 
+alias racket="${RACKET_DIR}/bin/racket"
 cd ..
