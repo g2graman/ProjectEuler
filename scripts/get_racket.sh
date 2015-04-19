@@ -1,6 +1,6 @@
 #!/bin/bash
 
-START = `pwd`
+START=$(pwd)
 
 if [[ -z "$RACKET_VERSION" ]]; then
 	echo "Racket version environment variable not set, setting default"
@@ -50,4 +50,4 @@ fi
 
 alias racket='$RACKET_DIR/bin/racket'
 
-cd $START
+cd "$START"
