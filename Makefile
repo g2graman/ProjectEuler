@@ -18,7 +18,7 @@ bash_testdepend:
 .PHONY: racket_testdepend
 racket_testdepend:
 	scripts/get_cover.sh
-	
+
 .PHONY: clean
 clean:
 	scripts/clean.sh
