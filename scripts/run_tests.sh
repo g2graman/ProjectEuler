@@ -5,7 +5,7 @@
 #    ICDIFF=./bin/icdiff
 #fi
 
-if [[ -n "${RACKET_DIR-}" ]]; then
+if [[ -n "${RACKET_DIR-}" ]] && [[ -e "$RACKET_DIR/bin/racket" ]]; then
 	RACKET="$RACKET_DIR/bin/racket"
 else
 	RACKET=racket

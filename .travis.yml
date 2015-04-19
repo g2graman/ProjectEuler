@@ -30,6 +30,7 @@ cache:
   directories:
   - bin
   - cache
+  - /usr/racket
   
 before_install:
   - scripts/get_racket.sh
