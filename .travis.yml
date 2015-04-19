@@ -4,7 +4,7 @@ sudo: false
 
 env:
   global:
-    - RACKET_DIR=~/racket
+    - RACKET_DIR=cache/racket
   matrix:
     - RACKET_VERSION=5.3.5
     - RACKET_VERSION=5.92
@@ -30,7 +30,7 @@ cache:
   directories:
   - bin/cover
   - cache
-  - ~/racket  # Matches RACKET_DIR
+  - cache/racket  # Matches RACKET_DIR
   
 before_install:
   - . scripts/get_racket.sh
