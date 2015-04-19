@@ -16,10 +16,12 @@ bash_testdepend:
 	&& chmod ugo+rx ./bin/icdiff
 	
 .PHONY: racket_testdepend
-racket_testdepend:
-	. scripts/get_racket.sh
+racket_testdepend: ${RACKET_DIR}/bin/racket
 	scripts/get_cover.sh
-	
+
+${RACKET_DIR}/bin/racket:
+	. scripts/get_racket.sh
+
 .PHONY: clean
 clean:
 	scripts/clean.sh
