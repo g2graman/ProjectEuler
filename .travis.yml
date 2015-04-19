@@ -28,13 +28,11 @@ addons:
 cache:
   apt: true
   directories:
-  - bin/cover
+  - bin
   - cache
-  - cache/racket  # Matches RACKET_DIR
   
 before_install:
-  - . scripts/get_racket.sh
-  - alias racket='$RACKET_DIR/bin/racket'
+  - scripts/get_racket.sh
 
 before_script:
   - make testdepend
