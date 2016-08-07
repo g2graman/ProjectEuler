@@ -33,17 +33,15 @@
 (define (add-children triangle i j)
   (list-update triangle j
                (lambda (updateRow)
-                  (letrec ([leftChild (list-ref (list-ref triangle (+ j 1)) i)]
-                           [rightChild  (list-ref (list-ref triangle (+ j 1)) (+ i 1))]
-                           [currentCell (list-ref updateRow i)]
-                           [maxChild (max leftChild rightChild)]
-                           [newCurrentCell (list (+ currentCell maxChild))]
-                           [rowPrefix (take updateRow i)]
-                           [rowSuffix (drop updateRow (+ i 1))]
-                           [updatedRow (append rowPrefix
-                                           newCurrentCell
-                                           rowSuffix)])
-                    updatedRow))))
+                  (letrec ([leftChild (list-ref (list-ref triangle (+ j 1)) i)] ; find the left child of the current cell on the next row
+                           [rightChild  (list-ref (list-ref triangle (+ j 1)) (+ i 1))] ; find the right child of the current cell on the next row
+                           [currentCell (list-ref updateRow i)] ; get the current cell
+                           [maxChild (max leftChild rightChild)] ; find the highest of the two children
+                           [newCurrentCell (list (+ currentCell maxChild))] ; calculate the value that will replace the current cell
+                           [rowPrefix (take updateRow i)] ; find the values in the row before the current cell
+                           [rowSuffix (drop updateRow (+ i 1))] ; find the values in the row after the current cell
+                           [updatedRow (append rowPrefix newCurrentCell rowSuffix)]) ; put it together
+                    updatedRow)))) ; return the updated row
 
 (define answer (solve triangle))
 (provide answer)
